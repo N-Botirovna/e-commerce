@@ -1,9 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import Footer from '../../components/templates/footer/Footer';
 import Header from '../../components/templates/header/Header';
 import Section from '../../components/templates/section/Section';
 import SideBar from '../../components/templates/sidebar/SideBar';
 
-export const SearchContext = createContext();
+export const SearchContext = createContext()
 
 function Home() {
   const [state, setState] = useState({
@@ -12,7 +13,7 @@ function Home() {
     error: false
   });
   const [search, setSearch] = useState('');
-
+  
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
@@ -45,6 +46,7 @@ function Home() {
           <Section />
         </div>
       </div>
+      <Footer/>
     </SearchContext.Provider>
   );
 }

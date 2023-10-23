@@ -1,10 +1,12 @@
 import React from 'react';
 import RatingStars from './RatingStars';
 import { UilHeart } from '@iconscout/react-unicons';
+import { Link } from 'react-router-dom';
 
 function Card({ name, image, price, desc, rate, category }) {
   return (
-    <div className="w-[330px] bg-white rounded-lg shadow-2xl p-4 hover:scale-101 hover:shadow-md">
+    <Link to={"/single-page"}>
+      <div className="w-[330px] bg-white rounded-lg shadow-2xl p-4 hover:scale-101 hover:shadow-md">
       <img src={image} alt="img" className="w-full h-[270px] object-cover rounded-t-lg mb-7" />
       <div className="p-2 flex justify-between items-center mb-2">
         <div>
@@ -20,8 +22,9 @@ function Card({ name, image, price, desc, rate, category }) {
         </div>
       </div>
       <p className="px-2 font-sm text-lg mb-1">{name}</p>
-      <p className="px-2 text-gray-500">Camera - Black</p>
+      <p className="px-2 text-gray-500 mb-3">Camera - Black</p>
     </div>
+    </Link>
   );
 }
 

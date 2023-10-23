@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../../components/templates/header/Header'
+import { SearchContext } from '../home/Home'
 
 function SinglePage() {
+    const {search, setSearch, state} = useContext(SearchContext)
     return (
-
         <>
-        <h1>Single Page</h1>
         <Header/>
+        <h1>Single Page</h1>
         </>
-
     )
 }
 

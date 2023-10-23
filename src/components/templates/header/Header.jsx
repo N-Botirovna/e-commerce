@@ -4,7 +4,6 @@ import Button from '../../ui/Button';
 import InputField from '../../ui/InputField';
 import { UilHeart } from '@iconscout/react-unicons';
 import { SearchContext } from '../../../pages/home/Home';
-
 function Header() {
   const { search, setSearch } = useContext(SearchContext);
   
