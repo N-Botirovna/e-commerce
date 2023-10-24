@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Section({values, setValues}) {
   
   const { state, search } = useContext(SearchContext);
-  const nums = [10, 9, 8, 7, 6, 5, 4, 3];
+  const nums = [6, 7, 8, 9, 10];
   const [cardsPerPage, setCardsPerPage] = useState(nums[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
