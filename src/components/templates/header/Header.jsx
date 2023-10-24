@@ -5,6 +5,7 @@ import Button from '../../ui/Button';
 import InputField from '../../ui/InputField';
 import { UilHeart } from '@iconscout/react-unicons';
 import { SearchContext } from '../../../App';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const { search, setSearch } = useContext(SearchContext);
@@ -20,10 +21,10 @@ function Header() {
         />
         <Button title={'search'} />
       </form>
-      <div className='flex flex-col ml-16 items-center'>
+      <Link to={"/orders"} className='flex flex-col ml-16 items-center'>
         <UilHeart />
         <p>Orders</p>
-      </div>
+      </Link>
     </div>
   );
 }
