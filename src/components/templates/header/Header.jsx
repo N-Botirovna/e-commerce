@@ -1,12 +1,14 @@
+
 import React, { useContext } from 'react';
 import { Logo } from '../../../image/logo/logo';
 import Button from '../../ui/Button';
 import InputField from '../../ui/InputField';
 import { UilHeart } from '@iconscout/react-unicons';
-import { SearchContext } from '../../../pages/home/Home';
+import { SearchContext } from '../../../App';
+
 function Header() {
   const { search, setSearch } = useContext(SearchContext);
-  
+
   return (
     <div className='m-auto container flex justify-between items-center py-6'>
       <Logo />

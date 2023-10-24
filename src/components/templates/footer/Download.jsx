@@ -1,12 +1,14 @@
 import React from 'react'
+import AppStore from '../../../image/logo/AppStore'
+import Google from '../../../image/logo/Google'
 import SideTitle from '../../ui/SideTitle'
 
 function Download() {
     return (
-       <div>
+       <div className='flex flex-col gap-2'>
             <SideTitle Paragraph={"Get App"}/>
-            <img src="./../../../image/png/AppStore.png" alt="AppStore" />
-            <img src="./../../../image/png/GooglePlay.png" alt="GooglePlay" />
+            <AppStore/>
+            <Google/>
        </div> 
     )
 }

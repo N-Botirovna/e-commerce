@@ -1,53 +1,32 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { SearchContext } from '../../App';
 import Footer from '../../components/templates/footer/Footer';
 import Header from '../../components/templates/header/Header';
 import Section from '../../components/templates/section/Section';
 import SideBar from '../../components/templates/sidebar/SideBar';
 
-export const SearchContext = createContext()
+
 
 function Home() {
-  const [state, setState] = useState({
-    isFetched: false,
-    products: [], 
-    error: false
-  });
-  const [search, setSearch] = useState('');
+  const [check, setCheck] = useState([])
+  const handleSelectedValues = (selectedValues) => {
+    console.log('Selected Values:', selectedValues);
+    setCheck(selectedValues)
+  };
   
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((data) => {
-        setState({
-          products: data, 
-          isFetched: true,
-          error: false
-        });
-      })
-      .catch((err) => {
-        setState({
-          isFetched: true,
-          products: [], 
-          error: true
-        });
-      });
-  }, []);
-
-  
-
   return (
-    <SearchContext.Provider value={{ search, setSearch, state }}>
+    <>
       <Header />
       <div className="flex container mx-auto w-full mt-3 gap-20">
         <div className="w-1/5 border-t py-2">
-          <SideBar />
+          <SideBar handleSelectedValues={handleSelectedValues}/>
         </div>
         <div className="w-3/4">
-          <Section />
+          <Section values = {check} setValues = {setCheck}/>
         </div>
       </div>
       <Footer/>
-    </SearchContext.Provider>
+    </>
   );
 }
 

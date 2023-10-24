@@ -1,25 +1,26 @@
 import React, { useContext, useState } from 'react';
-import { SearchContext } from '../../../pages/home/Home';
+import { SearchContext } from '../../../App';
 import CheckBox from '../../ui/CheckBox';
 import SideTitle from '../../ui/SideTitle';
 
-function SideBar() {
+function SideBar({ handleSelectedValues }) {
   const { state } = useContext(SearchContext);
   const { products } = state;
 
   const [selectedValues, setSelectedValues] = useState([]);
 
-  const handleCheckboxChange = (value) => {
-    if (selectedValues.includes(value)) {
-      setSelectedValues(selectedValues.filter((val) => val !== value));
-    } else {
-      setSelectedValues([...selectedValues, value]);
-    }
-  };
-
   const Categories = [...new Set(products.map((product) => product.category))];
   const brands = ['Samsung', 'Apple', 'Huawei', 'Pocco', 'Lenovo'];
   const features = ['Metallic', 'Plastic Cover', '8GB Ram', 'Super power', 'Large Memory'];
+
+  const handleCheckboxChange = (value) => {
+    if (selectedValues.includes(value)) {
+      setSelectedValues(selectedValues.filter((v) => v !== value));
+    } else {
+      setSelectedValues([...selectedValues, value]);
+    }
+    handleSelectedValues(selectedValues); 
+  };
 
   return (
     <div>
@@ -32,7 +33,7 @@ function SideBar() {
               brandName={category.charAt(0).toUpperCase() + category.slice(1)}
               hidden={'hidden'}
               checked={selectedValues.includes(category)}
-              onChange={() => handleCheckboxChange(category)}
+              onchange={() => handleCheckboxChange(category)}
             />
           </li>
         ))}
@@ -53,7 +54,7 @@ function SideBar() {
               brandName={brand}
               id={brand}
               checked={selectedValues.includes(brand)}
-              onChange={() => handleCheckboxChange(brand)}
+              onchange={() => handleCheckboxChange(brand)}
             />
           </li>
         ))}
@@ -72,7 +73,7 @@ function SideBar() {
               brandName={feature}
               id={feature}
               checked={selectedValues.includes(feature)}
-              onChange={() => handleCheckboxChange(feature)}
+              onchange={() => handleCheckboxChange(feature)}
             />
           </li>
         ))}
